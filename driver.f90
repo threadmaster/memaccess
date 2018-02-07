@@ -1,6 +1,6 @@
 program driver 
 
-integer, parameter :: DIM=50
+integer, parameter :: DIM=500
 real (kind=8) :: cpu_start, cpu_end
 real (kind=8) :: trace
 real (kind=8) :: matrixa(DIM,DIM), matrixb(DIM,DIM), matrixc(DIM,DIM)
