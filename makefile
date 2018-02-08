@@ -1,5 +1,5 @@
 
-F90 = pgfortran
+F90 = gfortran
 FFLAGS = 
 OPTFLAGS = -O0
 
