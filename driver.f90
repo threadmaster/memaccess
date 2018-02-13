@@ -1,35 +1,35 @@
 program driver 
 
-integer, parameter :: DIM=500
+integer, parameter :: MAXDIM = CPPFLAGS
 real (kind=8) :: cpu_start, cpu_end
 real (kind=8) :: trace
-real (kind=8) :: matrixa(DIM,DIM), matrixb(DIM,DIM), matrixc(DIM,DIM)
+real (kind=8) :: matrixa(MAXDIM,MAXDIM), matrixb(MAXDIM,MAXDIM), matrixc(MAXDIM,MAXDIM)
 
 real (kind=4) :: start, finish
 
   
-do i = 1, DIM 
-   do j = 1, DIM
-      matrixa(j,i) = 1.0D0 / sqrt(dble(DIM))
-      matrixb(j,i) = 1.0D0 / sqrt(dble(DIM))
+do i = 1, MAXDIM 
+   do j = 1, MAXDIM
+      matrixa(j,i) = 1.0D0 / sqrt(dble(MAXDIM))
+      matrixb(j,i) = 1.0D0 / sqrt(dble(MAXDIM))
    enddo
 enddo
 
 !Use fortran CPU_TIME subroutine 
 
 call cpu_time(start)
-call mmm(DIM, matrixa, matrixb, matrixc);
+call mmm(MAXDIM, matrixa, matrixb, matrixc);
 
 call cpu_time(finish)
 
 trace = 0.0;
-do i=1, DIM 
+do i=1, MAXDIM 
      trace = trace + matrixc(i,i)
 enddo
 
-mflops  = 2 * dble(DIM)**3/ (finish-start) / 1.0e6
+mflops  = 2 * dble(MAXDIM)**3/ (finish-start) / 1.0e6
  
-print *, DIM, trace, finish-start,  mflops
+print *, MAXDIM, trace, finish-start,  mflops
 
 end program driver 
 

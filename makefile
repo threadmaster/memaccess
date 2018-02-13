@@ -1,21 +1,21 @@
 
 F90 = gfortran
 FFLAGS = 
-OPTFLAGS = -O0
+OPTFLAGS = -O1
 
 all:  driver 
 
 ifeq ( $(origin size), undefined )
-	CPPFLAGS = 20
+	PROFLAGS = -D CPPFLAGS=20
 else
-    CPPFLAGS=$(size)
+    PROFLAGS = -D CPPFLAGS=$(size)
 endif
 
 driver : driver.o
 	$(F90) -o driver driver.o
 
 driver.o : driver.f90
-	$(F90) -c $(FFLAGS) $(OPTFLAGS) driver.f90
+	$(F90) -cpp -c $(FFLAGS) $(OPTFLAGS) $(PROFLAGS) driver.f90
 
 clean:
 	rm *.o
